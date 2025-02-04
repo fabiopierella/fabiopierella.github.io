@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Show Current Location on OpenStreetMap</title>
-  <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
     body {
@@ -23,11 +22,10 @@
   <h1>My Current Location</h1>
   <div id="map"></div>
 
-  <!-- Leaflet JavaScript -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
     // Initialize the map
-    const map = L.map('map').setView([0, 0], 13); // Default center (will be updated)
+    const map = L.map('map').setView([0, 0], 13);
 
     // Add OpenStreetMap tiles
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -39,4 +37,35 @@
 
     // Function to show the user's location on the map
     function showLocation(position) {
-      const { latitude, longitude } = position.co
+      const { latitude, longitude } = position.coords;
+      console.log('Location retrieved:', latitude, longitude);
+
+      // Update the map view to the user's location
+      map.setView([latitude, longitude], 13);
+
+      // Add or update the marker
+      if (userMarker) {
+        userMarker.setLatLng([latitude, longitude]);
+      } else {
+        userMarker = L.marker([latitude, longitude]).addTo(map)
+          .bindPopup('You are here!')
+          .openPopup();
+      }
+    }
+
+    // Function to handle errors
+    function handleError(error) {
+      console.error('Error getting location:', error.message);
+      alert('Unable to retrieve your location. Please enable location access and try again.');
+    }
+
+    // Check if Geolocation is supported
+    if (navigator.geolocation) {
+      console.log('Geolocation is supported.');
+      navigator.geolocation.getCurrentPosition(showLocation, handleError);
+    } else {
+      alert('Geolocation is not supported by your browser.');
+    }
+  </script>
+</body>
+</html>
