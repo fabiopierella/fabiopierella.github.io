@@ -3,76 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trip Schedule</title>
+  <title>Show Current Location on OpenStreetMap</title>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
     #map {
-      height: 300px;
+      height: 400px;
       width: 100%;
       margin-top: 20px;
     }
   </style>
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
-  <h1>Trip Schedule</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Time</th>
-        <th>Activity</th>
-        <th>Location</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>10:00 AM</td>
-        <td>Welcome Session</td>
-        <td><a href="#" onclick="showLocation(37.7749, -122.4194)">San Francisco</a></td>
-      </tr>
-      <tr>
-        <td>12:00 PM</td>
-        <td>Lunch</td>
-        <td><a href="#" onclick="showLocation(37.7849, -122.4294)">Downtown Cafe</a></td>
-      </tr>
-      <!-- Add more rows as needed -->
-    </tbody>
-  </table>
+  <h1>My Current Location</h1>
   <div id="map"></div>
 
   <!-- Leaflet JavaScript -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
     // Initialize the map
-    const map = L.map('map').setView([37.7749, -122.4194], 12);
+    const map = L.map('map').setView([0, 0], 13); // Default center (will be updated)
 
     // Add OpenStreetMap tiles
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    // Function to show a location on the map
-    function showLocation(lat, lng) {
-      map.setView([lat, lng], 15);
-      L.marker([lat, lng]).addTo(map);
-    }
-  </script>
-</body>
-</html>
+    // Create a marker for the user's location
+    let userMarker;
+
+    // Function to show the user's location on the map
+    function showLocation(position) {
+      const { latitude, longitude } = position.co
