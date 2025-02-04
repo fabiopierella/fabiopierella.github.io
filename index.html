@@ -28,6 +28,8 @@
       margin-top: 20px;
     }
   </style>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
   <h1>Trip Schedule</h1>
@@ -55,31 +57,22 @@
   </table>
   <div id="map"></div>
 
+  <!-- Leaflet JavaScript -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
     // Initialize the map
-    let map;
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 37.7749, lng: -122.4194 },
-        zoom: 12,
-      });
-    }
+    const map = L.map('map').setView([37.7749, -122.4194], 12);
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
 
     // Function to show a location on the map
     function showLocation(lat, lng) {
-      const location = { lat, lng };
-      map.setCenter(location);
-      new google.maps.Marker({ position: location, map });
+      map.setView([lat, lng], 15);
+      L.marker([lat, lng]).addTo(map);
     }
-
-    // Load the Google Maps API
-    function loadScript() {
-      const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDQLU8d5H7vKRjlzal2GydhboMwKekHtH0&callback=initMap`;
-      script.defer = true;
-      document.head.appendChild(script);
-    }
-    loadScript();
   </script>
 </body>
 </html>
