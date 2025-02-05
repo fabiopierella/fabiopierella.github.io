@@ -14,9 +14,10 @@ var currentLocationMarker = L.circleMarker([55.783, 12.518], {
 
 // Define locations
 var locations = [
-    { lat: 55.784, lng: 12.519, name: 'Location 1' },
-    { lat: 55.785, lng: 12.520, name: 'Location 2' },
-    { lat: 55.786, lng: 12.521, name: 'Location 3' }
+    { lat: 55.68634412924957, lng: 12.097581363876735, name: 'Vestas V52 turbine'},
+    { lat: 55.68706232885536, lng: 12.097898149813245, name: 'Measurement Instruments and LiDARS' },
+    { lat: 55.68771026985759, lng: 12.099745561102958, name: 'Large Scale Facility (LSF)' },
+    { lat: 55.69162080922385, lng: 12.102136334429295, name: 'Composite Materials Lab (COM)' }    
 ];
 
 // Add markers for each location

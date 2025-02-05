@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Interactive Tour Map</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Table style -->
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 20px;
+            }
+            h1 {
+                text-align: center;
+                color: #333;
+            }
+            table {
+                width: 80%;
+                margin: 0 auto;
+                border-collapse: collapse;
+                box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+            }
+            th, td {
+                padding: 12px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            th {
+                background-color: #4CAF50;
+                color: white;
+            }
+            tr:hover {
+                background-color: #f1f1f1;
+            }
+            a {
+                color: #4CAF50;
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+        </style>
+        <script>
+            function showLocation(locationId) {
+                // Implement your map location logic here
+                alert('Showing location ' + locationId);
+            }
+        </script>
+
+    </head>
+<body>
+    <h1>Group A</h1>
+
+    <div id="map" style="height: 500px;"></div>
+    <div id="schedule">
+        <h2>Schedule</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Activity</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>08:45 AM</td>
+                    <td>Vestas V52 Turbine</td>
+                    <td><a href="#" onclick="showLocation(1)">Vestas V52 Turbine</a></td>
+                </tr>
+                <tr>
+                    <td>09:30 AM</td>
+                    <td>Measurement Instruments and LiDARS</td>
+                    <td><a href="#" onclick="showLocation(2)">Measurement Instruments and LiDARS</a></td>
+                </tr>
+                <tr>
+                    <td>10:15 AM</td>
+                    <td>Large Scale Facility (LSF)</td>
+                    <td><a href="#" onclick="showLocation(3)">Large Scale Facility (LSF)</a></td>
+                </tr>
+                <tr>
+                    <td>11:00 AM</td>
+                    <td>Composite Materials Lab (COM)(LSF)</td>
+                    <td><a href="#" onclick="showLocation(4)">Composite Materials Lab (COM) (LSF)</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+
+    <a href="index.html">Back to Main Page</a>
+</body>
+</html>
