@@ -30,3 +30,20 @@ function showLocation(index) {
     var location = locations[index - 1];
     map.setView([location.lat, location.lng], 15);
 }
+
+// Function to update the current location marker
+function updateCurrentLocation(position) {
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    currentLocationMarker.setLatLng([lat, lng]);
+    map.setView([lat, lng], 13);
+}
+
+// Get the current location from the browser
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(updateCurrentLocation, function(error) {
+        console.error("Error getting location: ", error);
+    });
+} else {
+    console.error("Geolocation is not supported by this browser.");
+}
