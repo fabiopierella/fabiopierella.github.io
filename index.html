@@ -4,14 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2 {
+            text-align: center;
+            color: #666;
+        }
+        table {
+            width: 50%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .emergency-contact {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px; /* Space between table and emergency contact */
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Plans Page</h1>
-    <ul>
-        <li><a href="planA.html">Plan A</a></li>
-        <li><a href="planB.html">Plan B</a></li>
-        <li><a href="planC.html">Plan C</a></li>
-        <li><a href="planD.html">Plan D</a></li>
-    </ul>
+    <h1>Welcome to the Tour to Risø (11th of Feb 2025)</h1>
+    <h2>46000 Introduction to Wind Energy</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Plan</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Group A</td>
+                <td><a href="planA.html">View Plan A</a></td>
+            </tr>
+            <tr>
+                <td>Group B</td>
+                <td><a href="planB.html">View Plan B</a></td>
+            </tr>
+            <tr>
+                <td>Group C</td>
+                <td><a href="planC.html">View Plan C</a></td>
+            </tr>
+            <tr>
+                <td>Group D</td>
+                <td><a href="planD.html">View Plan D</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="emergency-contact">
+            <p>In case of emergency, please contact: <strong>Fabio Pierella +45 93 51 07 93</strong></p>
+    </div>    
 </body>
 </html>

@@ -39,7 +39,7 @@ function updateCurrentLocation(position) {
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
     currentLocationMarker.setLatLng([lat, lng]);
-    map.setView([lat, lng], 13);
+    // map.setView([lat, lng], 13);
 }
 
 // Watch the current location from the browser
