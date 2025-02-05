@@ -39,9 +39,9 @@ function updateCurrentLocation(position) {
     map.setView([lat, lng], 13);
 }
 
-// Get the current location from the browser
+// Watch the current location from the browser
 if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(updateCurrentLocation, function(error) {
+    navigator.geolocation.watchPosition(updateCurrentLocation, function(error) {
         console.error("Error getting location: ", error);
     });
 } else {
