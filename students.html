@@ -93,9 +93,16 @@
                     const cols = row.split(',').map(col => col.trim()); // Trim whitespace
                     if (cols.length === 3) { // Ensure there are exactly 3 columns
                         const tr = document.createElement('tr');
-                        cols.forEach(col => {
+                        cols.forEach((col, index) => {
                             const td = document.createElement('td');
-                            td.textContent = col;
+                            if (index === 2) { // If it's the Group column
+                                const link = document.createElement('a');
+                                link.href = `plan${col.trim().charAt(col.length - 1)}.html`; // Create link based on group
+                                link.textContent = col.trim();
+                                td.appendChild(link);
+                            } else {
+                                td.textContent = col.trim();
+                            }
                             tr.appendChild(td);
                         });
                         tableBody.appendChild(tr);
