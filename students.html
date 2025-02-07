@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students and Groups</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            padding-bottom: 60px; /* Space for the footer */
+            box-sizing: border-box;
+            min-height: 100vh;
+            position: relative;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .content {
+            width: 50%;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .emergency-contact {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px; /* Space between table and emergency contact */
+        }
+        .emergency-contact-box {
+            display: inline-block;
+            padding: 10px;
+            border: 1px solid #333;
+            background-color: #ffcccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Students and Groups</h1>
+    <div class="content">
+        <table id="students-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Student Number</th>
+                    <th>Group</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be inserted here -->
+            </tbody>
+        </table>
+        <a href="index.html">Back to Main Page</a>    
+    </div>
+    <script>
+        // Function to fetch and parse CSV data
+        async function loadCSV() {
+            try {
+                const response = await fetch('students.csv');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.text();
+                const rows = data.split('\n').slice(1); // Skip header row
+                const tableBody = document.querySelector('#students-table tbody');
+
+                rows.forEach(row => {
+                    const cols = row.split(',').map(col => col.trim()); // Trim whitespace
+                    if (cols.length === 3) { // Ensure there are exactly 3 columns
+                        const tr = document.createElement('tr');
+                        cols.forEach(col => {
+                            const td = document.createElement('td');
+                            td.textContent = col;
+                            tr.appendChild(td);
+                        });
+                        tableBody.appendChild(tr);
+                    }
+                });
+            } catch (error) {
+                console.error('Error loading CSV:', error);
+                alert('Failed to load CSV data. Please check the console for more details.');
+            }
+        }
+
+        // Load CSV data when the page loads
+        window.onload = loadCSV;
+    </script>
+</body>
+</html>
