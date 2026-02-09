@@ -86,7 +86,7 @@
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.text();
-                const rows = data.split('\n').slice(1); // Skip header row
+                const rows = data.split('\n');
                 const tableBody = document.querySelector('#students-table tbody');
 
                 rows.forEach(row => {
